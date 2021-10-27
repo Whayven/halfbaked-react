@@ -7,6 +7,7 @@ import PotencyCalculator from './components/PotencyCalculator/PotencyCalculator'
 function App() {
   return (
     <div className="App">
+      <h1>Welcome to Half Baked Kitchen!</h1>
       <PotencyCalculator></PotencyCalculator>
     </div>
   );
