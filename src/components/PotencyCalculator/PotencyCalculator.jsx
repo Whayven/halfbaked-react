@@ -5,10 +5,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 const PotencyCalculator = () => {
     return (
         <div>
-            <Container>
-                <Row>
+            <Container fluid>
+                <Row className="justify-content-md-center">
                     <Col>
-                        <Row>
+                        <Row className="my-2">
                             <Col>
                                 <label>Amount of Cannabis: </label>
                             </Col>
@@ -16,7 +16,7 @@ const PotencyCalculator = () => {
                                 <input type="decimal" />
                             </Col>
                         </Row>
-                        <Row>
+                        <Row className="my-2">
                             <Col>
                                 <label>THC Percentage: </label>
                             </Col>
@@ -24,8 +24,8 @@ const PotencyCalculator = () => {
                                 <input type="decimal" />
                             </Col>
                         </Row>
-                        <Row>
-                            <Col>
+                        <Row className="my-2">
+                            <Col className="mx-5">
                                 <label>Type of oil: </label>
                             </Col>
                             <Col>
@@ -39,7 +39,7 @@ const PotencyCalculator = () => {
                                 </select>
                             </Col>
                             </Row>
-                        <Row>
+                        <Row className="my-4">
                             <Col>
                                 <button>Calculate Potency</button>
                             </Col>
