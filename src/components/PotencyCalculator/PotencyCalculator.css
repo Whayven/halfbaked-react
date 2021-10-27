@@ -6,7 +6,7 @@
     text-align: start;
 }
 
-.center-align{
+.center-align {
     text-align: justify;
     position: relative;
     left: 50px;
@@ -26,4 +26,8 @@
     text-align: center;
     position: relative;
     left: 25px;
+}
+
+.input {
+    text-align: center;
 }
