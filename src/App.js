@@ -2,7 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'react-bootstrap';
+import SignUp from './components/SignUp/SignUp';
 import PotencyCalculator from './components/PotencyCalculator/PotencyCalculator';
+import Merchandise from './components/Merchandise/Merchandise';
+import Cart from './components/Cart/Cart';
 
 function App() {
   return (

@@ -1,0 +1,29 @@
+.end-align {
+    text-align: end;
+}
+
+.start-align {
+    text-align: start;
+}
+
+.center-align{
+    text-align: justify;
+    position: relative;
+    left: 50px;
+}
+
+.select-offset {
+    width: 152.74px;
+    height: 32.99px;
+    padding: 1px 2px;
+    text-align: center;
+}
+
+.button-offset {
+    width: 173.16px;
+    height: 32.99px;
+    padding: 1px 2px;
+    text-align: center;
+    position: relative;
+    left: 25px;
+}

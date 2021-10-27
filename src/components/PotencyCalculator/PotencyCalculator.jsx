@@ -1,35 +1,44 @@
 import React from 'react'
 import '../../App.css'
-import { Container, Row, Col } from 'react-bootstrap';
+import './PotencyCalculator.css';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 const PotencyCalculator = () => {
     return (
         <div>
-            <Container fluid>
+            <Container fluid className="mx-auto">
                 <Row className="justify-content-md-center">
                     <Col>
                         <Row className="my-2">
-                            <Col>
+                            <Col className="end-align">
                                 <label>Amount of Cannabis: </label>
                             </Col>
-                            <Col>
-                                <input type="decimal" />
+                            <Col className="start-align">
+                                <input type="decimal" size='10'/>
                             </Col>
                         </Row>
                         <Row className="my-2">
-                            <Col>
+                            <Col className="end-align">
                                 <label>THC Percentage: </label>
                             </Col>
-                            <Col className="col">
-                                <input type="decimal" />
+                            <Col className="start-align">
+                                <input type="decimal" size='10' />
                             </Col>
                         </Row>
                         <Row className="my-2">
-                            <Col className="mx-5">
+                            <Col className="end-align">
+                                <label>Number of Servings: </label>
+                            </Col>
+                            <Col className="start-align">
+                                <input type="decimal" size='10' />
+                            </Col>
+                        </Row>
+                        <Row className="my-2">
+                            <Col className="end-align">
                                 <label>Type of oil: </label>
                             </Col>
-                            <Col>
-                                <select>
+                            <Col className="start-align">
+                                <select className="select-offset">
                                     <option value="butter">Butter</option>
                                     <option value="ghee">Ghee</option>
                                     <option value="coconut-oil">Coconut Oil</option>
@@ -39,9 +48,25 @@ const PotencyCalculator = () => {
                                 </select>
                             </Col>
                             </Row>
-                        <Row className="my-4">
+                        <Row className="my-5">
                             <Col>
-                                <button>Calculate Potency</button>
+                                <Button variant="success" className="button-offset">Calculate Potency</Button>
+                            </Col>
+                        </Row>
+                        <Row className="my-2">
+                            <Col className="end-align">
+                                <label>THC per serving: </label>
+                            </Col>
+                            <Col className="center-align">
+                                <label id="servingTHC">0 mg</label>
+                            </Col>
+                        </Row>
+                        <Row className="my-2">
+                            <Col className="end-align">
+                                <label>Total THC: </label>
+                            </Col>
+                            <Col className="center-align">
+                                <label id="totalTHC">0 mg</label>
                             </Col>
                         </Row>
                     </Col>
