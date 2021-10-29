@@ -1,54 +1,75 @@
-import React , { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import "../../App.css";
 import "./PotencyCalculator.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 const PotencyCalculator = () => {
+  const [calculated, setCalculated] = useState(false);
+  const [oilType, setOilType] = useState("");
+  const [extractionRate, setExtractionRate] = useState(0.0);
+  const [amount, setAmount] = useState(0);
+  const [servings, setServings] = useState(0);
+  const [percentage, setPercentage] = useState(0.0);
+  const [servingTHC, setServingTHC] = useState(0.0);
+  const [totalTHC, setTotalTHC] = useState(0.0);
 
-  const dispatch = useDispatch();
-  const [oilType, setOilType] = useState(""); 
-  const [extractionRate, setExtractionRate] = useState("");
-  const [amount, setAmount] = useState("");
-  const [servings, setServings] = useState("");
-  const [percentage, setPercentage] = useState("");
-  const [servingTHC, setServingTHC] = useState("");
-  const [totalTHC, setTotalTHC] = useState("");
-
-  const calculatePotency = () => {
-    switch(oilType){
-      case oilType === "Butter":
-        setExtractionRate(0.67);
-        break;
-      case oilType === "MCT-Oil" || oilType === "Coconut-Oil":
-        setExtractionRate(0.89);
-        break;
-      case oilType === "Ghee":
-        setExtractionRate(0.85);
-        break;
-      case oilType === "Glycerin":
-        setExtractionRate(0.90);
-        break;
-      case oilType === "Ethanol":
-        setExtractionRate(1.00);
-        break;
-      default:
-        setExtractionRate(0);
-        break;
+  const calculateExtractionRate = (oil) => {
+    let etr = 0;
+    if (oil === "Butter") {
+      etr = 0.67;
     }
+    else if (oil === "MCT-Oil" || oil === "Coconut-Oil") {
+      etr = 0.89;
+    }
+    else if (oil === "Ghee") {
+      etr = 0.85;
+    }
+    else if (oil == "Glycerin") {
+      etr = 0.90;
+    }
+    else if (oil === "Ethanol") {
+      etr = 1.00;
+    }
+    return etr;
+    // switch(oil){
+    //   case "Butter":
+    //     return 0.67;
+    //     break;
+    //   case "MCT-Oil" || "Coconut-Oil":
+    //     return 0.89;
+    //     break;
+    //   case "Ghee":
+    //     return 0.85;
+    //     break;
+    //   case "Glycerin":
+    //     return 0.90;
+    //     break;
+    //   case "Ethanol":
+    //     return 1.00;
+    //     break;
+    //   default:
+    //     return 0;
+    //     break;
+    // }
+  }
 
-    setTotalTHC((amount * percentage * extractionRate * 0.88 * 1000));
-    setServingTHC((totalTHC / servings));
+  const calculatePotency = (e) => {
+    e.preventDefault();
+    const etr = calculateExtractionRate(oilType);
+    setCalculatedPotency(etr);
+    setCalculated(true);
+  }
 
-    document.getElementById("totalTHC").innerHTML = totalTHC + " mg";
-    document.getElementById("servingTHC").innerHTML = servingTHC + " mg";
+  const setCalculatedPotency = (etr) => {
+    setExtractionRate(etr);
+    const tthc = (amount * percentage * etr * 0.88) * 1000;
+    const sthc = (tthc / servings);
+    setTotalTHC(tthc);
+    setServingTHC(sthc);
 
     console.log("Amount: " + amount);
-    console.log("Percentage: " + percentage);
-    console.log("Servings: " + servings);
-    console.log("Oil Type: " + oilType);
+    console.log("Percantage: " + percentage);
     console.log("Extraction Rate: " + extractionRate);
-
     console.log("Total: " + totalTHC);
     console.log("Serving: " + servingTHC);
   }
@@ -65,7 +86,8 @@ const PotencyCalculator = () => {
               </Col>
               <Col className="start-align">
                 <input type="decimal" size="10" className="input" onChange={(e) => {
-                setAmount(e.target.value);}}/>
+                  setAmount(e.target.value);
+                }} />
               </Col>
             </Row>
             <Row className="my-2">
@@ -74,7 +96,8 @@ const PotencyCalculator = () => {
               </Col>
               <Col className="start-align">
                 <input type="decimal" size="10" className="input" onChange={(e) => {
-                setPercentage((e.target.value/100));}}/>
+                  setPercentage((e.target.value / 100));
+                }} />
               </Col>
             </Row>
             <Row className="my-2">
@@ -83,7 +106,8 @@ const PotencyCalculator = () => {
               </Col>
               <Col className="start-align">
                 <input type="decimal" size="10" className="input" onChange={(e) => {
-                setServings(e.target.value);}}/>
+                  setServings(e.target.value);
+                }} />
               </Col>
             </Row>
             <Row className="my-2">
@@ -92,8 +116,8 @@ const PotencyCalculator = () => {
               </Col>
               <Col className="start-align">
                 <select className="select-offset" value={oilType} onChange={(e) => {
-            setOilType(e.target.value)
-          }}>
+                  setOilType(e.target.value)
+                }}>
                   <option value=""></option>
                   <option value="Butter">Butter</option>
                   <option value="Ghee">Ghee</option>
@@ -106,30 +130,37 @@ const PotencyCalculator = () => {
             </Row>
             <Row className="my-5">
               <Col>
-                <Button variant="success" className="button-offset" onClick={calculatePotency}>
+                <Button variant="success" className="button-offset" onClick={(e) => {
+                  calculatePotency(e);
+                }}>
                   Calculate Potency
                 </Button>
               </Col>
             </Row>
-            <Row className="my-2">
-              <Col className="end-align">
-                <label>THC per serving: </label>
-              </Col>
-              <Col className="center-align">
-                <label id="servingTHC">0 mg</label>
-              </Col>
-            </Row>
-            <Row className="my-2">
-              <Col className="end-align">
-                <label>Total THC: </label>
-              </Col>
-              <Col className="center-align">
-                <label id="totalTHC">0 mg</label>
-              </Col>
-            </Row>
+
           </Col>
         </Row>
       </Container>
+      {calculated &&
+        <Container>
+          <Row className="my-2">
+            <Col className="end-align">
+              <label>THC per serving: </label>
+            </Col>
+            <Col className="center-align">
+              <label id="servingTHC">{servingTHC} mg</label>
+            </Col>
+          </Row>
+          <Row className="my-2">
+            <Col className="end-align">
+              <label>Total THC: </label>
+            </Col>
+            <Col className="center-align">
+              <label id="totalTHC">{totalTHC} mg</label>
+            </Col>
+          </Row>
+        </Container>
+      }
     </div>
   );
 };
