@@ -31,26 +31,6 @@ const PotencyCalculator = () => {
       etr = 1.00;
     }
     return etr;
-    // switch(oil){
-    //   case "Butter":
-    //     return 0.67;
-    //     break;
-    //   case "MCT-Oil" || "Coconut-Oil":
-    //     return 0.89;
-    //     break;
-    //   case "Ghee":
-    //     return 0.85;
-    //     break;
-    //   case "Glycerin":
-    //     return 0.90;
-    //     break;
-    //   case "Ethanol":
-    //     return 1.00;
-    //     break;
-    //   default:
-    //     return 0;
-    //     break;
-    // }
   }
 
   const calculatePotency = (e) => {
