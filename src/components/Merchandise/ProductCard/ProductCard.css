@@ -1,0 +1,18 @@
+.ProductCardContainer{
+    /* background-color: #0aadce; */
+    max-width: 260px;
+}
+
+.ProductCardRow {
+    text-align: center;
+    color:  whitesmoke;
+}
+
+.AddToCartButton{
+    background-color: #054955;
+    color:  whitesmoke;
+}
+
+.border {
+    margin: 15px;
+}
