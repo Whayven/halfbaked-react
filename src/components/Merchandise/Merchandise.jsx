@@ -1,55 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import ProductCard from './ProductCard/ProductCard'
 
+import "./Merchandise.css";
+
 function Merchandise() {
+    const [products, setProducts] = useState([{id:1},{id:2},{id:3},{id:4},{id:5},{id:6}]);
     return (
         <div>
-            Merchandise
-            <Container>
-                <Row className='my-5'>
-                    <Col>
-                        <ProductCard></ProductCard>
-                    </Col>
-                    <Col>
-                        <ProductCard></ProductCard>
-                    </Col>
-                    <Col>
-                        <ProductCard></ProductCard>
-                    </Col>
-                    <Col>
-                        <ProductCard></ProductCard>
-                    </Col>
-                </Row>
-                <Row className='my-5'>
-                    <Col>
-                        <ProductCard></ProductCard>
-                    </Col>
-                    <Col>
-                        <ProductCard></ProductCard>
-                    </Col>
-                    <Col>
-                        <ProductCard></ProductCard>
-                    </Col>
-                    <Col>
-                        <ProductCard></ProductCard>
-                    </Col>
-                </Row>
-                <Row className='my-5'>
-                    <Col>
-                        <ProductCard></ProductCard>
-                    </Col>
-                    <Col>
-                        <ProductCard></ProductCard>
-                    </Col>
-                    <Col>
-                        <ProductCard></ProductCard>
-                    </Col>
-                    <Col>
-                        <ProductCard></ProductCard>
-                    </Col>
-                </Row>
-            </Container>
+            <h1>Merchandise</h1>
+            <div className="grid-container">
+                { products.map((product, index) => {
+                    return (
+                        <div key={index}>
+                            <ProductCard></ProductCard>
+                        </div>
+                        );
+                }) }
+            </div>
         </div>
     )
 }
